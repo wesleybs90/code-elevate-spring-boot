@@ -1,0 +1,306 @@
+{
+	"info": {
+		"name": "Local Project",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"description": "",
+			"auth": {
+				"type": "noauth"
+			},
+			"sort": 2,
+			"item": [
+				{
+					"name": "Produtos",
+					"description": "",
+					"auth": {
+						"type": "noauth"
+					},
+					"sort": 3,
+					"item": [
+						{
+							"name": "Listar Produtos",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/produtos",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 4
+						},
+						{
+							"name": "Buscar Produto por Id",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/produtos/1",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 5
+						},
+						{
+							"name": "Criar Produto",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/produtos",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"1\",\n\t\"nome\": \"Caderno\",\n\t\"descricao\": \"Descrição do produto caderno\",\n\t\"preco\": 9.99,\n\t\"estoque\": 50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"sort": 6
+						},
+						{
+							"name": "Atualizar Produto",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/produtos/1",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"1\",\n\t\"nome\": \"Caderno\",\n\t\"descricao\": \"Descrição do produto caderno\",\n\t\"preco\": 9.99,\n\t\"estoque\": 51\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"sort": 7
+						},
+						{
+							"name": "Excluir Produto",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/produtos/1",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 8
+						}
+					]
+				},
+				{
+					"name": "Pedidos",
+					"description": "",
+					"auth": {
+						"type": "noauth"
+					},
+					"sort": 9,
+					"item": [
+						{
+							"name": "Listar Pedidos",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 10
+						},
+						{
+							"name": "Criar Pedido",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"1\",\n\t\"idCliente\": \"1\",\n\t\"itens\": [\n\t\t{\n\t\t\t\"produtoId\": \"1\",\n\t\t\t\"quantidade\": 2,\n\t\t\t\"precoUnitario\": 9.99\n\t\t}\n\t],\n\t\"dataPedido\": \"2025-02-23T15:30:00Z\",\n\t\"status\": \"PENDENTE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"sort": 11
+						},
+						{
+							"name": "Atualizar Status do Pedido",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos/1/status?status=APROVADO",
+									"query": [
+										{
+											"key": "status",
+											"value": "APROVADO",
+											"description": "",
+											"disabled": false
+										}
+									],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 12
+						},
+						{
+							"name": "Buscar Pedido por Id",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos/1",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 13
+						},
+						{
+							"name": "Deletar Pedido",
+							"description": "",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos/1",
+									"query": [],
+									"variable": [],
+									"host": [
+										"localhost:8080"
+									]
+								},
+								"auth": {
+									"type": "noauth"
+								}
+							},
+							"sort": 14
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [],
+	"event": [],
+	"auth": {}
+}
