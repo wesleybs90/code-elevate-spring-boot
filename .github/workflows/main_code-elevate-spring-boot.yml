@@ -60,7 +60,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'code-elevate-spring-boot'
+          app-name: 'code_elevate'
           slot-name: 'Production'
           package: '*.jar'
           
