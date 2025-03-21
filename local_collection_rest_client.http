@@ -1,0 +1,80 @@
+# COLLECTIONS PARA REST CLIENT NO VS CODE
+
+######################################
+# PRODUTOS API
+######################################
+
+GET http://localhost:8080/produtos
+
+###
+
+GET http://localhost:8080/produtos/1
+
+###
+
+POST http://localhost:8080/produtos
+Content-Type: application/json
+
+{
+	"id": "1",
+	"nome": "Caderno",
+	"descricao": "Descrição do produto caderno",
+	"preco": 9.99,
+	"estoque": 50
+}
+
+###
+
+PUT http://localhost:8080/produtos/1
+Content-Type: application/json
+
+{
+	"id": "1",
+	"nome": "Caderno",
+	"descricao": "Descrição do produto caderno",
+	"preco": 9.99,
+	"estoque": 10
+}
+
+###
+
+DELETE http://localhost:8080/produtos/5
+
+
+######################################
+# PEDIDOS API
+######################################
+
+GET http://localhost:8080/pedidos
+
+###
+
+GET http://localhost:8080/pedidos/1
+
+###
+
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+	"id": "1",
+	"idCliente": "1",
+	"itens": [
+		{
+			"idProduto": "1",
+			"quantidade": 1,
+			"precoUnitario": 9.99
+		}
+	],
+	"dataPedido": "2025-02-23T15:30:00Z",
+	"status": "PENDENTE"
+}
+
+###
+
+PUT http://localhost:8080/pedidos/1/status
+    ?status=APROVADO
+
+###
+
+DELETE http://localhost:8080/pedidos/1
