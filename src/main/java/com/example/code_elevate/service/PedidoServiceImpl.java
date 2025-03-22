@@ -2,6 +2,7 @@ package com.example.code_elevate.service;
 
 import com.example.code_elevate.model.Pedido;
 import com.example.code_elevate.repository.PedidoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -18,9 +19,14 @@ import java.util.Optional;
 public class PedidoServiceImpl implements PedidoService {
 
   private final PedidoRepository pedidoRepository;
+  private final KafkaProducerService kafkaProducerService;
+  private final ObjectMapper objectMapper;
 
-  public PedidoServiceImpl(PedidoRepository pedidoRepository) {
+  public PedidoServiceImpl(PedidoRepository pedidoRepository, KafkaProducerService kafkaProducerService,
+      ObjectMapper objectMapper) {
     this.pedidoRepository = pedidoRepository;
+    this.kafkaProducerService = kafkaProducerService;
+    this.objectMapper = objectMapper;
   }
 
   @Override
@@ -36,7 +42,18 @@ public class PedidoServiceImpl implements PedidoService {
       new Date(),
       "PENDENTE",
       valorTotal);
-    return pedidoRepository.save(pedidoComValorTotal);
+
+    Pedido novoPedido = pedidoRepository.save(pedidoComValorTotal);
+
+    try {
+      // Chamada para enviar mensagem Kafka
+      String message = objectMapper.writeValueAsString(novoPedido);
+      kafkaProducerService.sendMessage("topic-update-stock", message);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return novoPedido;
   }
 
   @Override
