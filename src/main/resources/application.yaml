@@ -11,20 +11,20 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGODB_URI}
-      database: ${MONGODB_DATABASE}
+      uri: ${SPRING_DATA_MONGODB_URI}
+      database: ${SPRING_DATA_MONGODB_DATABASE}
 
     redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
-      password: ${REDIS_PASSWORD}
+      host: ${SPRING_REDIS_HOST}
+      port: ${SPRING_REDIS_PORT}
+      password: ${SPRING_REDIS_PASSWORD}
 
   kafka:
-    bootstrap-servers: ${EVENT_HUBS_NAMESPACE}.servicebus.windows.net:9093
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
     properties:
-      security.protocol: SASL_SSL
-      sasl.mechanism: PLAIN
-      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="${EVENT_HUBS_CONNECTION_STRING}";
+      security.protocol: ${SPRING_KAFKA_PROPERTIES_SECURITY_PROTOCOL}
+      sasl.mechanism: ${SPRING_KAFKA_PROPERTIES_SASL_MECHANISM}
+      sasl.jaas.config: ${SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG}
     consumer:
       group-id: group-update-stock
       auto-offset-reset: earliest

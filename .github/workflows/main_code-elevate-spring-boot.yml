@@ -56,6 +56,18 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D4657ACE43304D36B194FF2629CD5ADD }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_479A244810D04E559B1311D92ECA6B81 }}
 
+      - name: Set environment variables
+        run: |
+          echo "SPRING_DATA_MONGODB_URI=${{ secrets.SPRING_DATA_MONGODB_URI }}" >> $GITHUB_ENV
+          echo "SPRING_DATA_MONGODB_DATABASE=${{ secrets.SPRING_DATA_MONGODB_DATABASE }}" >> $GITHUB_ENV
+          echo "SPRING_REDIS_HOST=${{ secrets.SPRING_REDIS_HOST }}" >> $GITHUB_ENV
+          echo "SPRING_REDIS_PORT=${{ secrets.SPRING_REDIS_PORT }}" >> $GITHUB_ENV
+          echo "SPRING_REDIS_PASSWORD=${{ secrets.SPRING_REDIS_PASSWORD }}" >> $GITHUB_ENV
+          echo "SPRING_KAFKA_BOOTSTRAP_SERVERS=${{ secrets.SPRING_KAFKA_BOOTSTRAP_SERVERS }}" >> $GITHUB_ENV
+          echo "SPRING_KAFKA_PROPERTIES_SECURITY_PROTOCOL=${{ secrets.SPRING_KAFKA_PROPERTIES_SECURITY_PROTOCOL }}" >> $GITHUB_ENV
+          echo "SPRING_KAFKA_PROPERTIES_SASL_MECHANISM=${{ secrets.SPRING_KAFKA_PROPERTIES_SASL_MECHANISM }}" >> $GITHUB_ENV
+          echo "SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG=${{ secrets.SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG }}" >> $GITHUB_ENV
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3

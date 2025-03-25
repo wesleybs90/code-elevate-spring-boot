@@ -11,6 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>code_elevate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>code_elevate</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
